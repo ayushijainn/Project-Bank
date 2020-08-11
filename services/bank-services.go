@@ -36,7 +36,7 @@ func New() Service {
 		os.Exit(100)
 	}
 	log.Printf("connected")
-	//entity.CreateTable(db)
+	entity.CreateTable(db)
 
 	return &service{
 		db: db,
