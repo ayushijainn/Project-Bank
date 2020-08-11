@@ -1,0 +1,33 @@
+Insert into customer_details (id,name,ADDRESS,CITY,PHONE,email) values (100,'max','Box 352200','new york','6857100','Boulder','maxxi@gmail.com');
+Insert into customer_details (id,name,ADDRESS,CITY,PHONE,email) values (101,'sammy','Box 352400','austin','5431700','Boulder','sammy@gmail.com');
+Insert into customer_details (id,name,ADDRESS,CITY,PHONE,email) values (103,'susan','Box 352020','delhi','5431234','Boulder','sus@gmail.com');
+Insert into customer_details (id,name,ADDRESS,CITY,PHONE,email) values (104,'will','Box 351200','mumbai','5434321','Boulder','will@gmail.com');
+Insert into customer_details (id,name,ADDRESS,CITY,PHONE,email) values (105,'tom','123 AnyStreet','sydney','4441234','Louisville','tom@gmail.com');
+
+Insert into bank_details (id,name) values (100,'SBI');
+Insert into bank_details (id,name) values (101,'HDFC');
+Insert into bank_details (id,name) values (102,'ICICI');
+Insert into bank_details (id,name) values (104,'YES BANK');
+Insert into bank_details (id,name) values (105,'CITI BANK');
+Insert into bank_details (id,name) values (106,'PNB');
+
+Insert into branch_details (id,address,fk_bank_id) values (100,'delhi',102);
+Insert into branch_details (id,address,fk_bank_id) values (101,'sydney',104);
+Insert into branch_details (id,address,fk_bank_id) values (102,'newyork',103);
+Insert into branch_details (id,address,fk_bank_id) values (103,'mumbai',101);
+Insert into branch_details (id,address,fk_bank_id) values (104,'austin',100);
+Insert into branch_details (id,address,fk_bank_id) values (105,'austin',106);
+Insert into branch_details (id,address,fk_bank_id) values (106,'delhi',105);
+
+
+Insert into account_details (id,balance,type,fk_cust_id,fk_branch_id) values (100,5000.0,'saving',100,102);
+Insert into account_details (id,balance,type,fk_cust_id,fk_branch_id) values (101,25000.0,'current',103,100);
+Insert into account_details (id,balance,type,fk_cust_id,fk_branch_id) values (102,15000.0,'saving',102,104);
+Insert into account_details (id,balance,type,fk_cust_id,fk_branch_id) values (103,10000.0,'current',102,105);
+Insert into account_details (id,balance,type,fk_cust_id,fk_branch_id) values (104,5000.0,'saving',104,103);
+
+Insert into loan_details (id,fk_cust_id,fk_branch_id,amount) values (100,104,103,5000.0);
+Insert into loan_details (id,fk_cust_id,fk_branch_id,amount) values (101,102,105,5000.0);
+Insert into loan_details (id,fk_cust_id,fk_branch_id,amount) values (102,100,102,5000.0);
+Insert into loan_details (id,fk_cust_id,fk_branch_id,amount) values (103,103,100,5000.0);
+Insert into loan_details (id,fk_cust_id,fk_branch_id,amount) values (104,103,101,5000.0);
