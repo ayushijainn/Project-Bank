@@ -34,7 +34,7 @@ func main() {
 		adminGroup.GET("/branch/:id", GetBranchByid)
 		adminGroup.POST("/branch/", BranchInsertVal)
 		adminGroup.DELETE("/branch/:id", DeleteBranch)
-		//adminGroup.PUT("/branch/:id", UpdateBranch) */
+		adminGroup.PUT("/branch/:id", UpdateBranch) */
 	}
 
 	//adminGroup := router.Group("admin/brnach/:id")
@@ -44,19 +44,19 @@ func main() {
 		employeeGroup.GET("/account/:id", GetAccountByid)
 		employeeGroup.POST("/account/", AccountInsertVal)
 		employeeGroup.DELETE("/account/:id", DeleteAccount)
-		//employeeGroup.PUT("/account/:id", UpdateAccount)
+		employeeGroup.PUT("/account/:id", UpdateAccount)
 
 		employeeGroup.GET("/customer", GetCustomer)
 		employeeGroup.GET("/customer/:id", GetCustomerByid)
 		employeeGroup.POST("/customer/", CustomerInsertVal)
 		employeeGroup.DELETE("/customer/:id", DeleteCustomer)
-		//employeeGroup.PUT("/customer/:id", UpdateCustomer)
+		employeeGroup.PUT("/customer/:id", UpdateCustomer)
 
 		employeeGroup.GET("/loan", GetLoan)
 		employeeGroup.GET("/loan/:id", GetLoanByid)
 		employeeGroup.POST("/loan/", LoanInsertVal)
 		employeeGroup.DELETE("/loan/:id", DeleteLoan)
-		//employeeGroup.PUT("/loan/:id", UpdateLoan)
+		employeeGroup.PUT("/loan/:id", UpdateLoan)
 
 		employeeGroup.GET("/transaction", GetTransaction)
 		employeeGroup.GET("/transaction/:id", GetTransactionByid)
@@ -165,10 +165,12 @@ func GetBranchByid(ctx *gin.Context) {
 	var tab entity.Branch
 	var res interface{}
 	res, err = c.SelectID(&tab, ctx)
-	if err.Error() == "pg: no rows in result set" {
-		ctx.JSON(200, gin.H{"error": "not found"})
-	} else if err != nil {
-		ctx.JSON(200, gin.H{"error": err.Error()})
+	if err != nil {
+		if err.Error() == "pg: no rows in result set" {
+			ctx.JSON(200, gin.H{"error": "not found"})
+		} else {
+			ctx.JSON(200, gin.H{"error": err.Error()})
+		}
 	} else {
 		ctx.JSON(200, res)
 	}
@@ -234,10 +236,12 @@ func GetAccountByid(ctx *gin.Context) {
 	var tab entity.Account
 	var res interface{}
 	res, err = c.SelectID(&tab, ctx)
-	if err.Error() == "pg: no rows in result set" {
-		ctx.JSON(200, gin.H{"error": "not found"})
-	} else if err != nil {
-		ctx.JSON(200, gin.H{"error": err.Error()})
+	if err != nil {
+		if err.Error() == "pg: no rows in result set" {
+			ctx.JSON(200, gin.H{"error": "not found"})
+		} else {
+			ctx.JSON(200, gin.H{"error": err.Error()})
+		}
 	} else {
 		ctx.JSON(200, res)
 	}
@@ -298,10 +302,12 @@ func GetCustomerByid(ctx *gin.Context) {
 	var tab entity.Customer
 	var res interface{}
 	res, err = c.SelectID(&tab, ctx)
-	if err.Error() == "pg: no rows in result set" {
-		ctx.JSON(200, gin.H{"error": "not found"})
-	} else if err != nil {
-		ctx.JSON(200, gin.H{"error": err.Error()})
+	if err != nil {
+		if err.Error() == "pg: no rows in result set" {
+			ctx.JSON(200, gin.H{"error": "not found"})
+		} else {
+			ctx.JSON(200, gin.H{"error": err.Error()})
+		}
 	} else {
 		ctx.JSON(200, res)
 	}
@@ -362,10 +368,12 @@ func GetLoanByid(ctx *gin.Context) {
 	var tab entity.Loan
 	var res interface{}
 	res, err = c.SelectID(&tab, ctx)
-	if err.Error() == "pg: no rows in result set" {
-		ctx.JSON(200, gin.H{"error": "not found"})
-	} else if err != nil {
-		ctx.JSON(200, gin.H{"error": err.Error()})
+	if err != nil {
+		if err.Error() == "pg: no rows in result set" {
+			ctx.JSON(200, gin.H{"error": "not found"})
+		} else {
+			ctx.JSON(200, gin.H{"error": err.Error()})
+		}
 	} else {
 		ctx.JSON(200, res)
 	}
